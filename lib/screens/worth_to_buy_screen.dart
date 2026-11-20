@@ -5,6 +5,7 @@ import '../services/worth_to_buy_api.dart';
 import '../widgets/feedback.dart';
 import 'analysis_detail_screen.dart';
 import 'garment_form_screen.dart';
+import 'carbon_footprint/carbon_footprint_home_page.dart';
 
 class WorthToBuyScreen extends StatefulWidget {
   const WorthToBuyScreen({super.key, required this.api});
@@ -182,6 +183,18 @@ class _WorthToBuyScreenState extends State<WorthToBuyScreen> {
     appBar: AppBar(
       title: const Text('Worth to Buy'),
       actions: [
+        IconButton(
+          tooltip: 'Carbon Footprint',
+          icon: const Icon(Icons.eco_outlined),
+          onPressed: () {
+            Navigator.push<void>(
+              context,
+              MaterialPageRoute<void>(
+                builder: (_) => const CarbonFootprintHomePage(),
+              ),
+            );
+          },
+        ),
         if (!widget.api.hasSession)
           PopupMenuButton<bool>(
             tooltip: 'Pratinjau tampilan',
